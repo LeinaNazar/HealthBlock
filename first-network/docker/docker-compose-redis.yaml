@@ -1,0 +1,32 @@
+version: '2'
+
+networks:
+  hospital:
+
+services:
+  redis1:
+    image: 'redis:latest'
+    container_name: redis.hosp1.healthblock.com
+    command: redis-server --requirepass hosp1healthblock
+    ports:
+      - "6379:6379"
+    networks:
+      - hospital
+
+  redis2:
+    image: 'redis:latest'
+    container_name: redis.hosp2.healthblock.com
+    command: redis-server --requirepass hosp2healthblock
+    ports:
+      - "6380:6379"
+    networks:
+      - hospital
+
+  redis3:
+    image: 'redis:latest'
+    container_name: redis.hosp3.healthblock.com
+    command: redis-server --requirepass hosp3healthblock
+    ports:
+      - "6381:6379"
+    networks:
+      - hospital
